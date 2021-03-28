@@ -1,9 +1,5 @@
+import AWS from 'aws-sdk';
 
-// Load the SDK
-import AWS from 'aws-sdk'
-import Fs from 'fs'
-
-// Create an Polly client
 const Polly = new AWS.Polly({
     signatureVersion: 'v4',
     region: 'us-east-1'

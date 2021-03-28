@@ -1,8 +1,8 @@
 import sdk from"microsoft-cognitiveservices-speech-sdk";
 
 export const generateAudioMS = async (text) => {
-    var subscriptionKey = "791c6a44fc9a491fb6ac3513dc9b1100";
-    var serviceRegion = "southcentralus";
+    var subscriptionKey = process.env.MICROSOFTAPIKEY;
+    var serviceRegion = process.env.MICROSOFTSERVICEREGION;
     var filename = "audio.wav";
 
     var audioConfig = sdk.AudioConfig.fromAudioFileOutput(filename);

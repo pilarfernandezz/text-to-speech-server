@@ -4,12 +4,11 @@ import { IamAuthenticator } from 'ibm-watson/auth/index.js';
 
 export const generateAudioIBM = async (text) => {
     var file = null;
-    console.log("funfou "+text)
     const textToSpeech = new TextToSpeechV1({
         authenticator: new IamAuthenticator({
-            apikey: 'SFG9-FPpzm7qnONKiQQxXKKh82mfxztURH0t85bqcodY',
+            apikey: process.env.IBMAPIKEY,
         }),
-        serviceUrl: 'https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/8a8bc299-b41b-406a-931a-f0dc4080c092',
+        serviceUrl: process.env.IBMSERVICEURL,
     });
 
     const params = {
@@ -26,7 +25,6 @@ export const generateAudioIBM = async (text) => {
         })
         .then(repairedFile => {
             fs.writeFileSync('./file/audio.wav', repairedFile);
-            console.log('file',file);
             console.log('audio.wav written with a corrected wav header');
         })
         .catch(err => {
@@ -35,5 +33,4 @@ export const generateAudioIBM = async (text) => {
     
     file = fs.readFileSync('./file/audio.wav');
     return file
-
 }
